@@ -12,10 +12,6 @@ import mysql from 'mysql';
 
 
 const connection = mysql.createConnection({
-  // host: '109.234.161.47',
-  // user: 'rzgf6652_admin',
-  // password: 'Karl1991!',
-  // database: 'rzgf6652_test_db',
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
@@ -50,68 +46,6 @@ app.get('/', function (req,res) {
     res.send(new Response(HttpStatus.OK.code, HttpStatus.status, 'User v1.0' ))
     console.log(process.env);
 });
-
-
-// DEBUT A SUPPRIMER
-
-// app.get('/connect', function (req, res) {
-    // con.connect(function(err) {
-    //   if (err) {
-    //     res.send('error');
-    //   };
-    //   res.send('connected')
-    // });
-  // })
-
-// app.get('/coucou', function (req, res) {
-
-
-  // var connections = mysql.createConnection({
-  //   host: "109.234.161.47",
-  //   port: "3306",
-  //   user: "rzgf6652_admin",
-  //   password: "Karl1991!",
-  //   database: "rzgf6652_test_db",
-  // });
-  
-  // connection.connect();
-  // if (connection.connect()) {
-  //   console.log('bien co');
-  // } else {
-  //   console.log('pas bien co')
-  // }
-  
-  // connection.query('SELECT * FROM users', function(err, rows, fields) {
-   
-  //   console.log('The solution is: ', rows);
-  // });
-  
-  // connection.end();
-
-
-
-
-//   const pool = mysql.createPool({
-//     host: "109.234.161.47",
-//     port: "3306",
-//     user: "rzgf6652_admin",
-//     password: "Karl1991!",
-//     database: "rzgf6652_test_db",
-// });
-//     console.log("pool = ", pool);
-//     var con = mysql.createConnection(pool);
-//     console.log("con =", con);
-//     con.connect(function(err) {
-//         con.query(`SELECT * FROM users`, function (err, result, fields) {
-//             console.log(fields);
-//             console.log(JSON.stringify(fields))
-//             console.log(result)
-//         res.send(JSON.stringify(result))
-//       });
-//     });
-//   })
-
-// FIN A SUPPRIMER
 
 app.all('*', (req, res) => res.status(HttpStatus.NOT_FOUND.code)
     .send(new Response(HttpStatus.OK.code, HttpStatus.status, 'Route does not exist on the server' )));
